@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<title>DataTable AJAX pagination using Python Flask and Mysql database</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />    
+<link href='https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+</head>
+<body >
+    <div class="row" style="padding: 50px;">
+        <p><h1>Flask Data Fetched from Mysql</h1></p>
+        <div >
+            <table id='empTable' class='display dataTable' width='100%'>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Patient ID</th>
+                    <th>Medical Record Number</th>
+                    <th>Cinic Number</th>
+                    <th>Hospital Number</th>
+                    <th>Medical Identification</th>
+                    
+                </tr>
+                </thead>
+                 
+            </table>
+        </div>
+   </div>
+<script>
+$(document).ready(function() {
+ 
+  
+    var empDataTable = $('#empTable').DataTable({
+                'processing': true,
+                'serverSide': true,
+                'serverMethod': 'post',
+                'ajax': {
+                    'url':'/ajaxfile'
+                },
+                'lengthMenu': [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+                searching: true,
+                sort: false,
+                "serverSide": true,
+                'columns': [
+
+                    { data: 'id' },
+                    { data: 'parentId' },
+                    { data: 'MedicalRecordNumber' },
+                    { data: 'CinicNumber' },
+                    { data: 'HospitalNumber' },
+                    { data: 'MedicalIdentification'}
+                    
+                ]
+            });
+ 
+});
+ 
+</script>
+</body>
+</html>
